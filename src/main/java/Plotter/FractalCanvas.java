@@ -1,4 +1,6 @@
-public class FractalPlot
+package Plotter;
+
+public class FractalCanvas
 {
 	public double minX;
 	public double minY;
@@ -11,7 +13,7 @@ public class FractalPlot
 	public int imageWidthPixels;
 	public int imageHeightPixels;
 
-	public FractalPlot(double minX, double maxX, double minY, double maxY, double gridResolution)
+	public FractalCanvas(double minX, double maxX, double minY, double maxY, double gridResolution)
 	{
 		this.minX = minX;
 		this.maxX = maxX;
