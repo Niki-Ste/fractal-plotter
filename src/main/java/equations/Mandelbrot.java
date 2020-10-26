@@ -2,6 +2,7 @@ package equations;
 
 import org.apache.commons.math3.complex.Complex;
 
+import plotter.ColorMode;
 import plotter.FractalCanvas;
 
 // The Mandelbrot Set is given by the equation
@@ -13,6 +14,7 @@ public class Mandelbrot extends FractalEquation
 	public Mandelbrot()
 	{
 		this.recommendedCanvas = new FractalCanvas(-2.3, 1, -1.3, 1.3, 0.005);
+		this.recommendedColorMode = ColorMode.ByDivergenceSpeed;
 	}
 
 	@Override

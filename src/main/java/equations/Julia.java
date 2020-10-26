@@ -2,6 +2,7 @@ package equations;
 
 import org.apache.commons.math3.complex.Complex;
 
+import plotter.ColorMode;
 import plotter.FractalCanvas;
 
 // z is initially given by the complex coordinate.
@@ -17,6 +18,7 @@ public class Julia extends FractalEquation
 	{
 		this.polynomial = polynomial;
 		this.recommendedCanvas = new FractalCanvas(-2, 2, -1, 1, 0.0005);
+		this.recommendedColorMode = ColorMode.ByDivergenceSpeedSquared;
 	}
 
 	@Override

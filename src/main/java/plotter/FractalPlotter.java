@@ -17,27 +17,29 @@ public class FractalPlotter
 
 	public void plot(FractalEquation fractalEquation, int maxIterations, String fileName) throws IOException
 	{
-		plot(fractalEquation.recommendedCanvas, fractalEquation, maxIterations, fileName);
+		plot(fractalEquation, fractalEquation.recommendedCanvas, fractalEquation.recommendedColorMode, maxIterations, fileName);
 	}
 
-	public void plot(FractalCanvas fractalCanvas, FractalEquation fractalEquation, int maxIterations, String filename) throws IOException
+	public void plot(FractalEquation fractalEquation, FractalCanvas fractalCanvas, ColorMode colorMode, int maxIterations, String filename) throws IOException
 	{
 		BufferedImage bufferedImage = new BufferedImage(fractalCanvas.imageWidthPixels, fractalCanvas.imageHeightPixels, BufferedImage.TYPE_INT_RGB);
 
-		colourCanvasByDivergenceSpeed(fractalCanvas, fractalEquation, maxIterations, bufferedImage);
+		colourCanvasByDivergenceSpeed(fractalCanvas, fractalEquation, colorMode, maxIterations, bufferedImage);
 
 		writeFile(filename, bufferedImage);
 
 		bufferedImage.flush();
 	}
 
-	private void colourCanvasByDivergenceSpeed(FractalCanvas fractalCanvas, FractalEquation fractalEquation, int maxIterations, BufferedImage bufferedImage)
+	private void colourCanvasByDivergenceSpeed(FractalCanvas fractalCanvas, FractalEquation fractalEquation, ColorMode colorMode, int maxIterations, BufferedImage bufferedImage)
 	{
 		double coordinateX;
 		double coordinateY;
 		int pixelX;
 		int pixelY;
 		Complex c;
+
+		ColorSetter colorSetter = new ColorSetter(colorMode);
 
 		for (coordinateX = fractalCanvas.minX; coordinateX <= fractalCanvas.maxX; coordinateX += fractalCanvas.gridResolution)
 		{
@@ -53,7 +55,7 @@ public class FractalPlotter
 				//on a scale of 0 - 1
 				double divergenceSpeed = 1 - ((double) iterations / (double) maxIterations);
 
-				bufferedImage.setRGB(pixelX, pixelY, getColor(divergenceSpeed).getRGB());
+				bufferedImage.setRGB(pixelX, pixelY, colorSetter.determinePixelRGB(divergenceSpeed));
 			}
 		}
 	}
@@ -74,7 +76,7 @@ public class FractalPlotter
 			return Color.BLACK;
 		}
 
-		double hue = scaleZeroToOne * 0.7; // the 0.7 means we are using hues between red (0) and blue (0.7)
+		double hue = (scaleZeroToOne * scaleZeroToOne) * 0.7; // the 0.7 means we are using hues between red (0) and blue (0.7)
 
 		return Color.getHSBColor((float) hue, (float) 0.9, (float) 0.9);
 	}

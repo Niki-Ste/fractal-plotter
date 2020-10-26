@@ -1,6 +1,6 @@
 ## Fractals plotter
 
-![mandelbrot](https://github.com/niki-ste/fractal-plotter/blob/main/outputs/mandelbrot.png?raw=true)
+![mandelbrot](https://github.com/niki-ste/fractal-plotter/blob/main/outputs/julia.png?raw=true)
 
 A simple app to output digital images (pngs) of fractals, intended to stay close to the maths.
 
