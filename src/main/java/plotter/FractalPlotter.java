@@ -13,8 +13,6 @@ import equations.FractalEquation;
 
 public class FractalPlotter
 {
-	//todo niki smarter distribution of colours
-
 	public void plot(FractalEquation fractalEquation, int maxIterations, String fileName) throws IOException
 	{
 		plot(fractalEquation, fractalEquation.recommendedCanvas, fractalEquation.recommendedColorMode, maxIterations, fileName);
