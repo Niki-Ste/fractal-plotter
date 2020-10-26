@@ -1,5 +1,7 @@
 ## Fractals plotter
 
+![image did not load](https://github.com/niki-ste/fractal-plotter/blob/main/outputs/mandelbrot.png?raw=true)
+
 A simple app to output digital images (pngs) of fractals, intended to stay close to the maths.
 
 The output is colour coded by the divergence speed of the complex coordinate defining the pixel.
