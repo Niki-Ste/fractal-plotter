@@ -1,10 +1,7 @@
 import java.io.IOException;
 
-import org.apache.commons.math3.complex.Complex;
-
-import Equations.JuliaSet;
-import Plotter.FractalCanvas;
-import Plotter.FractalPlotter;
+import equations.BurningShip;
+import plotter.FractalPlotter;
 
 public class App
 {
@@ -14,11 +11,11 @@ public class App
 
 		try
 		{
-//			FractalPlot mandelbrotCanvas = new FractalPlot(-2.3, 1, -1.5, 1.5, 0.001);
-//			fractalPlotter.plot(mandelbrotCanvas, new MandelbrotEquation(), 50, "outputs/mandelbrot.png");
+//			fractalPlotter.plot(new Mandelbrot(), 50, "outputs/mandelbrot.png");
 
-			FractalCanvas juliaCanvas = new FractalCanvas(-2, 2, -1, 1, 0.0005);
-			fractalPlotter.plot(juliaCanvas, new JuliaSet(new Complex(-0.8, 0.2)), 50, "outputs/julia.png");
+//			fractalPlotter.plot(new JuliaSet(new Complex(-0.8, 0.2)), 50, "outputs/julia.png");
+
+			fractalPlotter.plot(new BurningShip(), 50, "outputs/burning_ship.png");
 		}
 		catch (IOException e)
 		{

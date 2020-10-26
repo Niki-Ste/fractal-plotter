@@ -1,4 +1,4 @@
-package Plotter;
+package plotter;
 
 import java.awt.Color;
 import java.awt.image.BufferedImage;
@@ -9,11 +9,16 @@ import javax.imageio.ImageIO;
 
 import org.apache.commons.math3.complex.Complex;
 
-import Equations.FractalEquation;
+import equations.FractalEquation;
 
 public class FractalPlotter
 {
 	//todo niki smarter distribution of colours
+
+	public void plot(FractalEquation fractalEquation, int maxIterations, String fileName) throws IOException
+	{
+		plot(fractalEquation.recommendedCanvas, fractalEquation, maxIterations, fileName);
+	}
 
 	public void plot(FractalCanvas fractalCanvas, FractalEquation fractalEquation, int maxIterations, String filename) throws IOException
 	{
@@ -22,6 +27,8 @@ public class FractalPlotter
 		colourCanvasByDivergenceSpeed(fractalCanvas, fractalEquation, maxIterations, bufferedImage);
 
 		writeFile(filename, bufferedImage);
+
+		bufferedImage.flush();
 	}
 
 	private void colourCanvasByDivergenceSpeed(FractalCanvas fractalCanvas, FractalEquation fractalEquation, int maxIterations, BufferedImage bufferedImage)

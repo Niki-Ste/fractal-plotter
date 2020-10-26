@@ -1,4 +1,4 @@
-package Plotter;
+package plotter;
 
 public class FractalCanvas
 {
