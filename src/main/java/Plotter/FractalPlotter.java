@@ -13,6 +13,8 @@ import Equations.FractalEquation;
 
 public class FractalPlotter
 {
+	//todo niki smarter distribution of colours
+
 	public void plot(FractalCanvas fractalCanvas, FractalEquation fractalEquation, int maxIterations, String filename) throws IOException
 	{
 		BufferedImage bufferedImage = new BufferedImage(fractalCanvas.imageWidthPixels, fractalCanvas.imageHeightPixels, BufferedImage.TYPE_INT_RGB);

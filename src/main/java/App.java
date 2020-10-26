@@ -15,10 +15,10 @@ public class App
 		try
 		{
 //			FractalPlot mandelbrotCanvas = new FractalPlot(-2.3, 1, -1.5, 1.5, 0.001);
-//			fractalPlotter.plot(mandelbrotCanvas, new MandelbrotEquation(), 50, "mandelbrot.png");
+//			fractalPlotter.plot(mandelbrotCanvas, new MandelbrotEquation(), 50, "outputs/mandelbrot.png");
 
 			FractalCanvas juliaCanvas = new FractalCanvas(-2, 2, -1, 1, 0.0005);
-			fractalPlotter.plot(juliaCanvas, new JuliaSet(new Complex(-0.8, 0.2)), 50, "julia.png");
+			fractalPlotter.plot(juliaCanvas, new JuliaSet(new Complex(-0.8, 0.2)), 50, "outputs/julia.png");
 		}
 		catch (IOException e)
 		{
