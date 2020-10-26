@@ -22,7 +22,13 @@ public class Julia extends FractalEquation
 	}
 
 	@Override
-	public int iterate(Complex complexCoordinate, int maxIterations)
+	public Complex iterate(Complex z, Complex complexCoordinate)
+	{
+		return z.multiply(z).add(polynomial);
+	}
+
+	@Override
+	public int calculateEscapeVelocity(Complex complexCoordinate, int maxIterations)
 	{
 		int iterations = 0;
 		Complex z = complexCoordinate;
@@ -34,5 +40,28 @@ public class Julia extends FractalEquation
 		}
 
 		return iterations;
+	}
+
+	@Override
+	public double calculateLowestDistanceToTrap(Complex complexCoordinate, Complex trap, int maxIterations)
+	{
+		double distance = 1e20;
+		double distanceToTrap;
+		int iterations = 0;
+
+		Complex z = complexCoordinate;
+
+		while (iterations < maxIterations)
+		{
+			z = iterate(z, complexCoordinate);
+			iterations++;
+
+			distanceToTrap = z.subtract(trap).abs();
+			if (distanceToTrap < distance)
+			{
+				distance = distanceToTrap;
+			}
+		}
+		return distance;
 	}
 }

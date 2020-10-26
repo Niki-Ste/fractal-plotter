@@ -1,5 +1,7 @@
 package plotter;
 
+import org.apache.commons.math3.complex.Complex;
+
 public class FractalCanvas
 {
 	public double minX;
@@ -40,5 +42,13 @@ public class FractalCanvas
 	public int getPixelIndexY(double coordinateY)
 	{
 		return (int) (((coordinateY - minY) / (maxY - minY)) * imageHeightPixels);
+	}
+
+	public double calculateMaximumDistanceFromOrigin()
+	{
+		double maxAbsY = Math.max(Math.abs(minY), Math.abs(maxY));
+		double maxAbsX = Math.max(Math.abs(minX), Math.abs(maxX));
+
+		return new Complex(maxAbsX, maxAbsY).abs();
 	}
 }
