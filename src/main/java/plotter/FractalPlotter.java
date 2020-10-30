@@ -1,6 +1,5 @@
 package plotter;
 
-import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -13,9 +12,10 @@ import equations.FractalEquation;
 
 public class FractalPlotter
 {
+	//future buddhabrot
 
 	//future - include non-point traps, such as crosses
-	public void plotOrbitTrap(FractalEquation fractalEquation, int maxIterations, String fileName) throws IOException
+	public void plotOrbitTrap(FractalEquation fractalEquation, int maxIterations, String fileName) throws IOException, CanvasBoundariesInvalidException
 	{
 		plotOrbitTrap(fractalEquation, fractalEquation.recommendedCanvas, fractalEquation.recommendedColorMode, maxIterations, fileName);
 	}
@@ -113,18 +113,5 @@ public class FractalPlotter
 		{
 			ImageIO.write(bufferedImage, "png", fileOutputStream);
 		}
-	}
-
-	public Color getColor (double scaleZeroToOne)
-	{
-		if (scaleZeroToOne == 0)
-		{
-			//so we don't have a huge red area which is a bit hard to look at
-			return Color.BLACK;
-		}
-
-		double hue = (scaleZeroToOne * scaleZeroToOne) * 0.7; // the 0.7 means we are using hues between red (0) and blue (0.7)
-
-		return Color.getHSBColor((float) hue, (float) 0.9, (float) 0.9);
 	}
 }

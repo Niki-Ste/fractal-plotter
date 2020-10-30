@@ -15,7 +15,7 @@ public class FractalCanvas
 	public int imageWidthPixels;
 	public int imageHeightPixels;
 
-	public FractalCanvas(double minX, double maxX, double minY, double maxY, double gridResolution)
+	public FractalCanvas(double minX, double maxX, double minY, double maxY, double gridResolution) throws CanvasBoundariesInvalidException
 	{
 		this.minX = minX;
 		this.maxX = maxX;
@@ -25,13 +25,25 @@ public class FractalCanvas
 
 		this.gridResolution = gridResolution;
 
+		if (!coordinateBoundariesAreValid())
+		{
+			throw new CanvasBoundariesInvalidException("The given canvas coordinates are not valid. Maximum values must be larger than minimum values.");
+		}
+
 		setImageSize();
+	}
+
+	boolean coordinateBoundariesAreValid()
+	{
+		if (maxX <= minX) return false;
+		if (maxY <= minY) return false;
+		return true;
 	}
 
 	public void setImageSize()
 	{
-		this.imageWidthPixels = (int) ((Math.abs(minX) / gridResolution) + (Math.abs(maxX) / gridResolution));
-		this.imageHeightPixels = (int) ((Math.abs(minY) / gridResolution) + (Math.abs(maxY) / gridResolution));
+		this.imageWidthPixels = (int) ((maxX - minX) / gridResolution);
+		this.imageHeightPixels = (int) ((maxY - minY) / gridResolution);
 	}
 
 	public int getPixelIndexX(double coordinateX)

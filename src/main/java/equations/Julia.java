@@ -2,6 +2,7 @@ package equations;
 
 import org.apache.commons.math3.complex.Complex;
 
+import plotter.CanvasBoundariesInvalidException;
 import plotter.ColorMode;
 import plotter.FractalCanvas;
 
@@ -14,7 +15,7 @@ public class Julia extends FractalEquation
 {
 	public Complex polynomial;
 
-	public Julia(Complex polynomial)
+	public Julia(Complex polynomial) throws CanvasBoundariesInvalidException
 	{
 		this.polynomial = polynomial;
 		this.recommendedCanvas = new FractalCanvas(-2, 2, -1, 1, 0.0005);

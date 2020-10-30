@@ -2,13 +2,14 @@ package equations;
 
 import org.apache.commons.math3.complex.Complex;
 
+import plotter.CanvasBoundariesInvalidException;
 import plotter.ColorMode;
 import plotter.FractalCanvas;
 
 // https://en.wikipedia.org/wiki/Burning_Ship_fractal
 public class BurningShip extends FractalEquation
 {
-	public BurningShip()
+	public BurningShip() throws CanvasBoundariesInvalidException
 	{
 		this.recommendedCanvas = new FractalCanvas(-2.5, 1.5, -1.8, 1, 0.005);
 		this.recommendedColorMode = ColorMode.ByDivergenceSpeedSquared;

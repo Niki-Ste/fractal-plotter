@@ -2,6 +2,7 @@ package equations;
 
 import org.apache.commons.math3.complex.Complex;
 
+import plotter.CanvasBoundariesInvalidException;
 import plotter.ColorMode;
 import plotter.FractalCanvas;
 
@@ -11,7 +12,7 @@ import plotter.FractalCanvas;
 // and c is the complex coordinate.
 public class Mandelbrot extends FractalEquation
 {
-	public Mandelbrot()
+	public Mandelbrot() throws CanvasBoundariesInvalidException
 	{
 		this.recommendedCanvas = new FractalCanvas(-2.3, 1, -1.3, 1.3, 0.005);
 		this.recommendedColorMode = ColorMode.ByDivergenceSpeed;
